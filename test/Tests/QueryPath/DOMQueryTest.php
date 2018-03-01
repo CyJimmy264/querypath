@@ -1037,6 +1037,7 @@ class DOMQueryTest extends TestCase {
 
   public function testSiblings() {
     $file = DATA_FILE;
+    $html = DATA_HTML_FILE;
     $this->assertEquals(3, qp($file, '#one')->siblings()->size());
     $this->assertEquals(2, qp($file, 'unary')->siblings('inner')->size());
   }
