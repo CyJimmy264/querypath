@@ -7,7 +7,7 @@
  * was done for a few reasons:
  * - The library has been refactored, and it made more sense to call the top
  *   level class QueryPath. This is not the top level class.
- * - There have been requests for a JSONQuery class, which would be the 
+ * - There have been requests for a JSONQuery class, which would be the
  *   natural complement of DOMQuery.
  */
 
@@ -937,7 +937,7 @@ class DOMQuery implements \QueryPath\Query, \IteratorAggregate, \Countable {
    * @see filterCallback()
    */
   public function filterLambda($fn) {
-    $function = create_function('$index, $item', $fn);
+    $function = @create_function('$index, $item', $fn);
     $found = new \SplObjectStorage();
     $i = 0;
     foreach ($this->matches as $item)
@@ -1232,7 +1232,7 @@ class DOMQuery implements \QueryPath\Query, \IteratorAggregate, \Countable {
   public function eachLambda($lambda) {
     $index = 0;
     foreach ($this->matches as $item) {
-      $fn = create_function('$index, &$item', $lambda);
+      $fn = @create_function('$index, &$item', $lambda);
       if ($fn($index, $item) === FALSE) return $this;
       ++$index;
     }
