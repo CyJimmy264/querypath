@@ -191,9 +191,9 @@ class QueryPath {
     // doctype is XHTML, since many XHTML documents are not valid XML
     // (because of coding errors, not by design).
 
-    $options += array(
+    $options += \QueryPath\Options::get() + array(
       'ignore_parser_warnings' => TRUE,
-      'convert_to_encoding' => 'ISO-8859-1',
+      'convert_to_encoding' => 'UTF-8',
       'convert_from_encoding' => 'auto',
       //'replace_entities' => TRUE,
       'use_parser' => 'html',
